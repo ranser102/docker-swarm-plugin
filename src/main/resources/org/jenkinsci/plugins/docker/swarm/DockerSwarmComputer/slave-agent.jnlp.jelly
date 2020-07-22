@@ -40,6 +40,9 @@
         <application-desc main-class="hudson.remoting.jnlp.Main">
             <argument>${it.jnlpMac}</argument>
             <argument>${it.node.nodeName}</argument>
+            <!-- <j:if test="${launcher.isWebSocket()}"> -->
+            <argument>-webSocket</argument>
+            <!-- </j:if> -->
             <j:if test="${launcher.tunnel!=null}">
                 <argument>-tunnel</argument>
                 <argument>${launcher.tunnel}</argument>

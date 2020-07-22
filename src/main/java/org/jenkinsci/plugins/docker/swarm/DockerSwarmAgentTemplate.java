@@ -45,6 +45,7 @@ public class DockerSwarmAgentTemplate implements Describable<DockerSwarmAgentTem
     private String email;
     private String serverAddress;
     private String pullCredentialsId;
+    private boolean webSocket;
 
     public DockerSwarmAgentTemplate() {
         // For Yaml Load
@@ -57,7 +58,7 @@ public class DockerSwarmAgentTemplate implements Describable<DockerSwarmAgentTem
             final String tmpfsDir, final String envVars, final long limitsNanoCPUs, final long limitsMemoryBytes,
             final long reservationsNanoCPUs, final long reservationsMemoryBytes, String portBinds, final boolean osWindows,
             final String baseWorkspaceLocation, final String placementConstraints, final String email,
-            final String serverAddress, final String pullCredentialsId) {
+            final String serverAddress, final String pullCredentialsId, final boolean webSocket) {
         this.image = image;
         this.hostBinds = hostBinds;
         this.hostNamedPipes = hostNamedPipes;
@@ -84,6 +85,7 @@ public class DockerSwarmAgentTemplate implements Describable<DockerSwarmAgentTem
         this.email = email;
         this.serverAddress = serverAddress;
         this.pullCredentialsId = pullCredentialsId;
+        this.webSocket = webSocket;
     }
 
     public String[] getCacheDirs() {
@@ -262,4 +264,9 @@ public class DockerSwarmAgentTemplate implements Describable<DockerSwarmAgentTem
     public String getPullCredentialsId() {
         return pullCredentialsId;
     }
+
+        public boolean isWebSocket() {
+        return webSocket;
+    }
+
 }

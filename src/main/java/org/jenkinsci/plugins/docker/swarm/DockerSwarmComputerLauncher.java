@@ -41,6 +41,7 @@ public class DockerSwarmComputerLauncher extends JNLPLauncher {
     private final String jobName;
     private final Queue.BuildableItem bi;
     private DockerSwarmAgentInfo agentInfo;
+    private boolean webSocket;
 
     private static final Logger LOGGER = Logger.getLogger(DockerSwarmComputerLauncher.class.getName());
 
@@ -69,6 +70,7 @@ public class DockerSwarmComputerLauncher extends JNLPLauncher {
         final DockerSwarmCloud configuration = DockerSwarmCloud.get();
         final DockerSwarmAgentTemplate dockerSwarmAgentTemplate = configuration.getLabelConfiguration(this.label);
 
+        this.webSocket = true; //dockerSwarmAgentTemplate.isWebSocket();
         this.agentInfo = this.bi.getAction(DockerSwarmAgentInfo.class);
         this.agentInfo.setDockerImage(dockerSwarmAgentTemplate.getImage());
         this.agentInfo.setLimitsNanoCPUs(dockerSwarmAgentTemplate.getLimitsNanoCPUs());
